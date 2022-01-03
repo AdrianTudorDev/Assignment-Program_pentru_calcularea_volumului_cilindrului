@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ro" dir="ltr">
+<head>
+    <title>Calculul Volumului Cilindrului</title>
+    <meta charset="UTF-8">
+    <meta name="desciption" content="Mihajlo Idvorski Pupin">
+    <meta name="keywords" content="HTML, CSS, Volum, Cilindru, Volumul Cilindrului, Calculul Volumului">
+    <meta name="author" content="Tudor Adrian">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+		}
+		body, main{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			background: #dff1ff;
+		}
+		header{
+			position: absolute;
+			top: 100px;
+			padding: 5px;
+			border: 2px solid rgba(255,255,255,1);
+			background: rgba(255,255,255,0.1);
+			border-radius: 20px;		
+		}
+		.title{
+			position: absolute;
+			top: 200px;
+			padding: 5px;
+			text-align: center;		
+			border: 2px solid rgba(255,255,255,0.5);
+			background: rgba(255,255,255,0.1);
+			border-radius: 10px;
+		}
+		.data{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			top: 350px;
+		}
+		.details{
+			margin-left: 2px;
+			margin-right: 2px;
+			height: 50px;
+			width: 250px;
+		}
+		.details p{
+			display: flex;
+			justify-content: left;
+			align-items: center;
+			margin: 2px 0px;
+		}
+		.values{
+			margin-left: 2px;
+			margin-right: 2px;
+			height: 50px;
+			width: 250px;
+		}
+		.values input{
+			margin: 1px 0px;
+		}
+		.calculate{
+			position: absolute;
+			top: 75px;
+			background: purple;
+		}
+		.results{
+			position: absolute;
+			top: 100px;
+			border: 2px solid rgba(255,255,255,1);
+			background: rgba(255,255,255,0.5);
+			padding: 5px;
+			border-radius: 10px;
+			min-width: 200px;
+		}
+
+	</style>
+</head>
+<body>
+    <header>
+		<h1>Calculator a Volumului unui Cilindrul</h1>
+    </header>
+	
+    <main>
+		<article class="title">
+			<h2>Formmula pentru aflarea volumului cilindrului este:</h2>
+			<h2>V = r<sup>2</sup>*H*π</h2>
+		</article>
+		
+		<article class="data">
+		
+			<article class="details">
+				<p><b>r [m] </b> - raza bazei cilindurlui</p>
+				<p><b>H [m] </b> - înălțimea</p>
+				<p><b>π</b> - constanta Pi, aproximativ 3,14</p>
+			</article>
+		
+			<article class="values">
+				<input type="number"  placeholder="raza în m" id="radius">
+				<input type="number"  placeholder="înălțimea în m" id="height">
+			</article>
+			
+			<article class="calculate">
+				<input id="calcul" type="submit" value="Calculeaza">
+			</article>
+			
+			<article class="results">
+				<p>Volumul este: <b><span id="result">0</span> m<sup>3</sup></b></p>
+			</article>
+		</article>		
+	</main>
+		
+    <footer>
+    </footer> 		
+		
+	<script>	
+		var calculate = document.getElementById('calcul');
+		
+		calculate.addEventListener('click', () => {	
+			var r = Number(document.getElementById("radius").value);
+			var h = Number(document.getElementById("height").value);
+				
+			if(r < 0 || h < 0){
+				alert("Valorile introduse pentru înălțime și rază trebuie să fie pozitive!!");
+				if(r < 0 && h < 0){
+					alert("Modifică valoarea razei și înălțimii!");
+				}				
+				else if(r < 0 && h > 0){
+					alert("Modifică valoarea razei!");
+				}
+				else if(h < 0 && r > 0){
+					alert("Modifică valoarea înălțimii!");
+				}
+			} else{
+				let v = Math.pow(r, 2) * h * Math.PI;
+				document.getElementById('result').innerHTML = parseFloat(v).toFixed(4);
+			}			
+		});
+	</script>	
+</body>
+</html>
